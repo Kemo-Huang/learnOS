@@ -28,6 +28,7 @@
 # ps        report a snapshot of the current processes
 # ps aux    report every current processes on the system using BSD syntax
 # kill      kill process with pid
+# dirname   show the directory name without full path
 
 # Pipe operator: |
 # The output of the first command is piped to the second command as its input.
@@ -86,5 +87,17 @@ lines_in_text () {
 }
 num_lines=`lines_in_text $1`  # use the argument of the calling command in terminal 
 echo The file $1 has $num_lines lines in it.
+
+hello="hello world"
+hello=${hello// /\\ } # change space into backslash space
+
+declare -a array  # declare an array
+array+=("$hello" "!") # append elements
+for i in ${array[@]} # traverse the elements in array
+do
+    echo $i
+done
+
+mapfile -t files < <(ls pwd) # store the outputs of commands into the array 'files'
 
 # To be continue
