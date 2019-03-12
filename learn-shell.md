@@ -1,42 +1,60 @@
+# Learn Shell in Operating System
+
+## Basic bash commands
+
+Command   | Description
+----------| -----------
+echo      | display string or variables
+file      | determine file type
+ls        | list directory contents
+ll        | list directory contents with long listing format
+ls -a     | list directory contents without ignoring files start with "."
+chmod     | change mode for file permission, + for adding, - for removing, = for setting
+mkdir     | make directories
+rm        | remove files
+rm -r     | recursively remove files, often use when removing directories
+rm -f     | forcely remove files
+cp        | copy files
+cp -r     | copy directories
+mv        | move files
+cat       | concatenate files and print all contents
+more      | print one screenful contents
+less      | similar to more
+head -n   | print contents with a certain number of lines at the beginning of file
+tail -n   | print contents with a certain number of lines at the end of file
+tail -f   | monitoring appending contents
+grep      | search and print the contents with the keyword in the file 
+ps        | report a snapshot of the current processes
+ps aux    | report every current processes on the system using BSD syntax
+kill      | kill process with pid
+dirname   | show the directory name without full path
+
+- Pipe operator: |
+  - The output of the first command is piped to the second command as its input.
+
+- Output redirect operator: > and >>
+  - The > overwrites the file if it exists or creates it if it doesn't exist.
+  - The >> appends to a file or creates the file if it doesn't exist.
+
+## Comparator
+
+Command | Description
+----- | ----------
+-eq   | equal
+-ne   | not equal
+-gt   | greater than
+-ge   | greater or equal
+-lt   | less than
+-le   | less or equal
+
+
+## Bash Shell Script
+
+```bash
 #!/bin/bash
 # You can also use other interpreters like /usr/bin/python
 # If you want the new shell to be executed, you should give it the execution authority
 # The command is "chmod +x learn-shell.sh" 
-
-############################################################################################
-# Basic bash commands:
-# echo      display string or variables
-# file      determine file type
-# ls        list directory contents
-# ll        list directory contents with long listing format
-# ls -a     list directory contents without ignoring files start with "."
-# chmod     change mode for file permission, + for adding, - for removing, = for setting
-# mkdir     make directories
-# rm        remove files
-# rm -r     recursively remove files, often use when removing directories
-# rm -f     forcely remove files
-# cp        copy files
-# cp -r     copy directories
-# mv        move files
-# cat       concatenate files and print all contents
-# more      print one screenful contents
-# less      similar to more
-# head -n   print contents with a certain number of lines at the beginning of file
-# tail -n   print contents with a certain number of lines at the end of file
-# tail -f   monitoring appending contents
-# grep      search and print the contents with the keyword in the file 
-# ps        report a snapshot of the current processes
-# ps aux    report every current processes on the system using BSD syntax
-# kill      kill process with pid
-# dirname   show the directory name without full path
-
-# Pipe operator: |
-# The output of the first command is piped to the second command as its input.
-
-# Output redirect operator: > and >>
-# The > overwrites the file if it exists or creates it if it doesn't exist.
-# The >> appends to a file or creates the file if it doesn't exist.
-############################################################################################
 
 foo=123  # no space between '='
 
@@ -49,13 +67,6 @@ elif [ 10 -lt 20 ]  # else if
 then echo 10 is less than 20
 else echo 10 is larger than 20
 fi  # end if
- 
-# -eq   equal
-# -ne   not equal
-# -gt   greater than
-# -ge   greater or equal
-# -lt   less than
-# -le   less or equal
 
 i=0
 while [ $i -lt 10 ]  # while loop
@@ -101,3 +112,5 @@ done
 mapfile -t files < <(ls pwd) # store the outputs of commands into the array 'files'
 
 # To be continue
+
+```
