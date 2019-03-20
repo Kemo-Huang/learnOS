@@ -100,18 +100,27 @@ PCB is a **data structure** in the operating system kernel containing the inform
 
 ### User Time
 
-user-space memory
+- CPU time spent in user-mode code
+- user-space memory
 
 ### System Time
 
-kernel-space memory
+- CPU time spent in the kernel
+- kernel-space memory
 
-- real = ut + st
-- real > ut + st
-- real < ut + st
+### Real Time
+
+total elapsed time
+
+- real time = user time + sys time
+- real time > user time + sys time
+  - Heavy I/O activity
+  - Lack of CPU
+- real time < user time + sys time
   - multithreading
 
 ## Exit
+
 exit()
 - clean up kernel-space memory
 - clean up uesr-space memory
@@ -131,3 +140,15 @@ Should be re-parenting
 ## Signal 
 
 kill() 
+
+## Status / Life Cycle
+
+### new 
+### ready
+### running
+- system call
+- interrupt
+- exception
+### waiting
+- interruptible wait
+### terminated
