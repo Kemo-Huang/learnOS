@@ -140,15 +140,3 @@ Should be re-parenting
 ## Signal 
 
 kill() 
-
-## Status / Life Cycle
-
-### new 
-### ready
-### running
-- system call
-- interrupt
-- exception
-### waiting
-- interruptible wait
-### terminated

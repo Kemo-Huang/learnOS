@@ -23,33 +23,43 @@
 
 ## Process Scheduling
 
-CPU is limited
+Multiprogramming
+- processes running at all times so as to maximize CPU utilization.
+- degree: number of processes currently in memory
+- number of running process = number of cores
 
-- CPU-bound process: user-time>sys-time 
-- I/O-bound process: sys-time>user-time
+CPU-bound process:
+- user time > sys time 
+- do more computations than I/O 
+
+I/O-bound process: 
+- sys time > user time
+- do more I/O than computations
+
+### Scheduling Queues
+
+![process schedulng queues](pictures/process-scheduling-queues.png)
+
 
 ### preemptive
 
 ### algorithms
 
-#### input
+#### input tasks
 
-- tasks
-  - arrival time
-  - CPU requirement
+- arrival time
+- CPU requirement
 
 #### online vs offline
 
 #### algorithm evaluation
 
-- # of context switches
+- number of **context switches**
 - individual & average **waiting time**
 - individual & average **turnaround time**
 
-individual turnaround time
-  - finish time - arrival time
-individual waiting time
-  - turnaround time - required time
+individual turnaround time = **finish time - arrival time**  
+individual waiting time = **turnaround time - required time**
 
 #### shorest job first (SJF)
 
