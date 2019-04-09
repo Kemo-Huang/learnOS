@@ -54,8 +54,18 @@ Operations upon **shared states** are **[critical sections](https://en.wikipedia
   - **0** if *&sem* is shared between **threads of a process**. (sem is at the **address** that is visible to all **threads** (e.g. a global variable, a variable in heap)  
   - **1** if *&sem* is shared between **between processes**. (sem is in the **region** of **shared memory**)
 
-**semWait (P):** decreases the semaphore value. the value becomes negative, then the process executing the semWait is blocked.
-**semSignal (V):** increases semaphore value. If the resulting value is less than or equal to zero, then a process is blocked by a semWait operation, if any, is unblocked.
+##### int sem_wait(sem_t *sem);
+
+sem_wait() **decrements** (locks) the semaphore pointed to by *sem*. 
+
+- If the semaphore's value **> 0**, then the decrement proceeds, and the function returns, immediately. 
+- If the semaphore's value currently **= 0,** then the calling process or thread **block**s until either it becomes possible to perform the **decrement** (i.e., the semaphore value rises above zero), or a **signal handler interrupt**s the call.
+
+##### int sem_post(sem_t *sem);
+
+sem_post() **increments** (unlocks) the semaphore pointed to by sem. 
+
+- If the semaphore's value consequently becomes > 0, then another process or thread blocked in a sem_wait call will be woken up and proceed to lock the semaphore.
 
 
 
