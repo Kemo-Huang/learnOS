@@ -49,10 +49,14 @@ Operations upon **shared states** are **[critical sections](https://en.wikipedia
 
 ##### int sem_init(sem_t *sem, int pshared, unsigned int value);
 
-- **sem**: pointer to unnamed semaphore
+sem_init() initializes the unnamed semaphore at the address pointed to by sem.
+
+- **sem**: the pointer to the unnamed semaphore
 - **pshared**: argument indicates whether this semaphore is to be shared between the threads of a process, or between processes.
   - **0** if *&sem* is shared between **threads of a process**. (sem is at the **address** that is visible to all **threads** (e.g. a global variable, a variable in heap)  
   - **1** if *&sem* is shared between **between processes**. (sem is in the **region** of **shared memory**)
+
+- **value**: initial value for sem
 
 ##### int sem_wait(sem_t *sem);
 
@@ -67,7 +71,9 @@ sem_post() **increments** (unlocks) the semaphore pointed to by sem.
 
 - If the semaphore's value consequently becomes > 0, then another process or thread blocked in a sem_wait call will be woken up and proceed to lock the semaphore.
 
+##### int sem_close(sem_t *sem);
 
+sem_close() closes the named semaphore referred to by sem, allowing any resources that the system has allocated to the calling process for this semaphore to be freed.
 
 
 
