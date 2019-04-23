@@ -73,10 +73,6 @@ the list of I/O devices allocated to the process, a list of open files...
 
 ## Mode
 
-| | User Mode | Kernel Mode
--- | -- | --
-mode bit | 1 | 0
-
 ### Kernel
 
 - task list
@@ -88,3 +84,27 @@ mode bit | 1 | 0
 1. System call
 2. Interrupt
 3. Exception
+
+## Multi-
+
+### Multiprogramming
+
+There are one or more programs loaded in main memory which are ready to execute. Only one program at a time is able to get the CPU for execution and the others are waiting. 
+
+- maximize the use of CPU time
+
+### Multiprocessing
+
+Multiple processors run at a time
+
+### Multitasking
+
+Multiple tasks share a common processing resource (CPU, memory)
+
+### Multithreading
+
+A process have multiple threads.
+
+Multithreading in a single process context. (concurrency)
+
+Multithreading in multiprocessing system. (parallelism)

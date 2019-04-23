@@ -47,6 +47,10 @@ Operations upon **shared states** are **[critical sections](https://en.wikipedia
 
 ## Semaphore (信号量)
 
+- an integer of available resources
+
+- waiting list
+
 ##### int sem_init(sem_t *sem, int pshared, unsigned int value);
 
 sem_init() initializes the unnamed semaphore at the address pointed to by sem.
@@ -58,12 +62,16 @@ sem_init() initializes the unnamed semaphore at the address pointed to by sem.
 
 - **value**: initial value for sem
 
+### P
+
 ##### int sem_wait(sem_t *sem);
 
 sem_wait() **decrements** (locks) the semaphore pointed to by *sem*. 
 
 - If the semaphore's value **> 0**, then the decrement proceeds, and the function returns, immediately. 
 - If the semaphore's value currently **= 0,** then the calling process or thread **block**s until either it becomes possible to perform the **decrement** (i.e., the semaphore value rises above zero), or a **signal handler interrupt**s the call.
+
+### V
 
 ##### int sem_post(sem_t *sem);
 
@@ -76,6 +84,33 @@ sem_post() **increments** (unlocks) the semaphore pointed to by sem.
 sem_close() closes the named semaphore referred to by sem, allowing any resources that the system has allocated to the calling process for this semaphore to be freed.
 
 
+
+#### Producer-consumer Problem
+
+```c
+void producer(void) {
+int item;
+while(TRUE) {
+item = produce_item();
+	wait(&avail);
+	wait(&mutex);
+	insert_item(item);
+	post(&mutex);
+	post(&fill);
+	}
+}
+void consumer(void) {
+int item;
+while(TRUE) {
+	wait(&fill);
+	wait(&mutex);
+	item = remove_item();
+	post(&mutex);
+	post(&avail);
+	//consume the item;
+	}
+}
+```
 
 
 
