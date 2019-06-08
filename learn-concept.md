@@ -4,21 +4,32 @@
 
 ### Thread Control Block (TCB)
 
-- Thread ID (tid)
-- Stack Pointer (sp)
-- Program Counter (pc)
-- State of thread (running, ready, waiting, start, done)
-- Thread's register values
-- Pointer to Process control block (PCB)
-
-
-
-## Address Space
+- **Thread ID** (tid)
+- **Stack Pointer** (sp)
+- **Program Counter** (pc)
+- **Thread state** (running, ready, waiting, start, done)
+- **Register values**
+- Pointer to Process control block (**PCB**)
 
 ## Process
 
 A process is a **program in execution**.
-The status of current activity of a process is **PC**.  
+
+### Process Control Block (PCB)
+
+- **Process state**: new, ready, running, waiting, terminated
+
+- **Program Counter**: Indicates the address of the next instruction to be executed for this process.
+
+- **Registers**: accumulators, index registers, stack pointers... + condition-code information
+
+- **CPU-scheduling** information: process priority, pointers to scheduling queues...
+
+- **Memory-management** information: value of the base, limit registers, page tables, segment tables
+
+- **Accounting** information: used CPU, real time, time limits, account numbers, job or process numbers...
+
+- **I/O status** information: the list of I/O devices allocated to the process, a list of open files...
 
 ### State / Life Cycle
 
@@ -52,35 +63,9 @@ The process has finished execution.
 
 ![process state](pictures/process-state.png)
 
-### Process Control Block (PCB)
 
-#### Process state
 
-new, ready, running, waiting, terminated
-
-#### Program Counter
-
-Indicates the address of the next instruction to be executed for this process.
-
-#### CPU registers
-
-accumulators, index registers, stack pointers... + condition-code information
-
-#### CPU-scheduling information
-
-process priority, pointers to scheduling queues...
-
-#### Memory-management information
-
-value of the base, limit registers, page tables, segment tables
-
-#### Accounting information
-
-used CPU, real time, time limits, account numbers, job or process numbers...
-
-#### I/O status information
-
-the list of I/O devices allocated to the process, a list of open files...
+## Address Space
 
 ## Mode
 
@@ -95,6 +80,28 @@ the list of I/O devices allocated to the process, a list of open files...
 1. System call
 2. Interrupt
 3. Exception
+
+## Context Switch
+
+A **context switch** is the process of storing the state of a [process](https://en.wikipedia.org/wiki/Process_(computing)) or of a [thread](https://en.wikipedia.org/wiki/Thread_(computing)), so that it can be restored and [execution](https://en.wikipedia.org/wiki/Execution_(computing)) resumed from the same point later. 
+
+Save process state (PCB)
+
+- save TCB 
+
+- address space switch
+
+When to switch:
+
+- **multitasking**: when (1) process makes itself not running (2) preemptive multitasking: may switch out running process. Prevent starvation: timer interrupt.
+- **interrupt handling**: a minimal part of context (established at the beginning of interrupt handling) is changed.
+- user and kernel **mode switching** in some OS: not necessary.
+
+Cost: 
+
+- Running **task scheduler**.
+- **TLB flushes** (address space switch) when switching threads between different processes. 
+- Indirectly cost by sharing **CPU cache** between tasks.
 
 ## Multi-
 
@@ -116,6 +123,6 @@ Multiple tasks share a common processing resource (CPU, memory)
 
 A process have multiple threads.
 
-Multithreading in a single process context. (concurrency)
+- **Concurrency**: Multithreading in a **single process context**.
 
-Multithreading in multiprocessing system. (parallelism)
+- **Parallelism**: Multithreading in **multiprocessing** system.
