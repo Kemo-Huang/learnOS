@@ -2,6 +2,17 @@
 
 ## Thread 
 
+### Thread Control Block (TCB)
+
+- Thread ID (tid)
+- Stack Pointer (sp)
+- Program Counter (pc)
+- State of thread (running, ready, waiting, start, done)
+- Thread's register values
+- Pointer to Process control block (PCB)
+
+
+
 ## Address Space
 
 ## Process
