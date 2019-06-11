@@ -13,17 +13,17 @@ In unix, the only way to new a child process is fork().
 ### The kernel space is updated
 
 - copy data from parent
-- update children list of parent 
-- update child PID
-- update child running time
+- update parent's children list
+- update child's PID
+- update child's running time
 - update child's pointer to parent
 
 ### The user space is updated
 
-- return value for parent = child PID
+- return value for parent = child's PID
 - return value for child = 0
 
-### opened file array
+### Share opened file descriptors
 
 Share the same terminal output stream.
 

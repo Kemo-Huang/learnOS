@@ -11,7 +11,7 @@
 - **Register values**
 - Pointer to Process control block (**PCB**)
 
-![](E:\Blog\learnOS\pictures\thread-lifecycle.png)
+![](pictures\thread-lifecycle.png)
 
 ## Process
 
@@ -34,6 +34,8 @@ A process is a **program in execution**.
 - **Accounting** information: used CPU, real time, time limits, account numbers, job or process numbers...
 
 - **I/O status** information: the list of I/O devices allocated to the process, a list of open files...
+
+![](E:\Operating System\learnOS\pictures\pcb.png)
 
 ### State / Life Cycle
 
