@@ -1,4 +1,4 @@
-# Learn Process in Operating System
+# Process in Operating System
 
 ## Fork
 
@@ -91,8 +91,7 @@ int dup3(int oldfd, int newfd, int flags);
 
 ## Process Control Block (PCB)
 
-PCB is a **data structure** in the operating system kernel containing the information needed to manage the scheduling of a particular process.  
-"the manifestation of a process in an operating system."
+PCB is a **data structure** in the operating system kernel containing the information needed to manage the scheduling of a particular process.  "The manifestation of a process in an operating system."
 
 ## Pipe
 

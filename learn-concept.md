@@ -1,4 +1,4 @@
-# Learn Operating System Basic Concept
+# Operating System Basic Concept
 
 ## Thread 
 
@@ -11,17 +11,21 @@
 - **Register values**
 - Pointer to Process control block (**PCB**)
 
+![](E:\Blog\learnOS\pictures\thread-lifecycle.png)
+
 ## Process
 
 A process is a **program in execution**.
+
+**Heavyweight** process: a process has a single thread of control
 
 ### Process Control Block (PCB)
 
 - **Process state**: new, ready, running, waiting, terminated
 
-- **Program Counter**: Indicates the address of the next instruction to be executed for this process.
+- **Program counter**: Indicates the address of the next instruction to be executed for this process.
 
-- **Registers**: accumulators, index registers, stack pointers... + condition-code information
+- **Register values**: accumulators, index registers, stack pointers... + condition-code information
 
 - **CPU-scheduling** information: process priority, pointers to scheduling queues...
 
@@ -53,7 +57,7 @@ Instructions are being executed.
 
 The process is waiting for some event to occur (such as an I/O completion or reception of a signal)
 
-- interruptible wait
+- **sleep()**: running to **interruptible wait** 
 
 #### Terminated
 
@@ -67,7 +71,9 @@ The process has finished execution.
 
 ## Address Space
 
-## Mode
+Programs execute in an address space that is distinct from the memory space of the physical machine.
+
+## Dual Mode Operation
 
 ### Kernel
 
@@ -97,11 +103,17 @@ When to switch:
 - **interrupt handling**: a minimal part of context (established at the beginning of interrupt handling) is changed.
 - user and kernel **mode switching** in some OS: not necessary.
 
+What to switch:
+
+- Within process: TCB
+- Between process: TCB, PCB, file descriptor
+
 Cost: 
 
 - Running **task scheduler**.
+- **Save and restore** registers.
 - **TLB flushes** (address space switch) when switching threads between different processes. 
-- Indirectly cost by sharing **CPU cache** between tasks.
+- Indirectly cost by sharing **CPU cache** between tasks and **TLB misses**.
 
 ## Multi-
 
@@ -123,6 +135,6 @@ Multiple tasks share a common processing resource (CPU, memory)
 
 A process have multiple threads.
 
-- **Concurrency**: Multithreading in a **single process context**.
+- **Concurrency**: At least two threads are **making progress**. It is multithreading in a **single process context**.
 
-- **Parallelism**: Multithreading in **multiprocessing** system.
+- **Parallelism**: At least two threads are **executing simultaneously**. It is multithreading in **multiprocessing** system.

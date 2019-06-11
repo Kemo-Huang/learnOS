@@ -1,6 +1,6 @@
 # Scheduling
 
-## Context Switching
+## Context Switch
 
 - block / wait
 - POSIX signal
@@ -23,25 +23,29 @@
 
 ## Process Scheduling
 
-Multiprogramming
-- processes running at all times so as to maximize CPU utilization.
-- degree: number of processes currently in memory
-- number of running process = number of cores
+**Multiprogramming**
 
-CPU-bound process:
+- **Maximize CPU utilization**.
+- **Degree**: number of processes currently in memory
+- \# of running process = \# of cores
+
+**CPU-bound process:**
+
 - user time > sys time 
 - do more computations than I/O 
 
-I/O-bound process: 
+**I/O-bound process:** 
+
 - sys time > user time
 - do more I/O than computations
+
+**preemptive** scheduler vs **cooperative** scheduler.
 
 ### Scheduling Queues
 
 ![process schedulng queues](pictures/process-scheduling-queues.png)
 
 
-### preemptive
 
 ### algorithms
 
@@ -50,7 +54,7 @@ I/O-bound process:
 - arrival time
 - CPU requirement
 
-#### online vs offline
+#### on line vs off line
 
 #### algorithm evaluation
 
@@ -58,7 +62,7 @@ I/O-bound process:
 - individual & average **waiting time**
 - individual & average **turnaround time**
 
-individual turnaround time = **finish time - arrival time**  
+individual **turnaround time = finish time - arrival time**  
 individual waiting time = **turnaround time - required time**
 
 #### shorest job first (SJF)
